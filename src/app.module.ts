@@ -13,8 +13,6 @@ import { ConfigModule } from '@nestjs/config';
     MongooseModule.forRootAsync({
       useFactory: () => ({
         uri: process.env.DB_URI,
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
       }),
     }),
   ],

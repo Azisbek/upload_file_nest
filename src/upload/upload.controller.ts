@@ -18,11 +18,11 @@ import * as path from 'path';
 export class UploadController {
   constructor(private readonly uploadService: UploadService) {}
 
-  @Post()
+  @Post('/post')
   @UseInterceptors(
     FileInterceptor('image', {
       storage: diskStorage({
-        destination: './src/upload/assets',
+        destination: '/tmp',
         filename: (req, file, callBack) => {
           const fileName =
             path.parse(file.originalname).name.replace(/\s/g, '') + Date.now();
@@ -41,7 +41,7 @@ export class UploadController {
     });
   }
 
-  @Get('/get')
+  @Get()
   async getFile() {
     return this.uploadService.getFile();
   }
