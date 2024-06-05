@@ -22,7 +22,7 @@ export class UploadController {
   @UseInterceptors(
     FileInterceptor('image', {
       storage: diskStorage({
-        destination: '/tmp',
+        destination: './src/assets',
         filename: (req, file, callBack) => {
           const fileName =
             path.parse(file.originalname).name.replace(/\s/g, '') + Date.now();
